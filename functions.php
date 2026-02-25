@@ -34,7 +34,7 @@ function ds_theme_assets() {
 add_action('wp_enqueue_scripts', 'ds_theme_assets');
 
 function ds_theme_set(){
-    add_theme_supprot('post-thumbnails');
+    add_theme_support('post-thumbnails');
 
 
     add_theme_support('post-formats',array('aside','image','video'));
@@ -45,4 +45,29 @@ function ds_theme_set(){
 
 
 add_action('after_setup_theme','ds_theme_set');
+
+
+
+
+function ds_add_bootstrap(){
+   wp_enqueue_style(
+    'bootstrap-css',
+    'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css',
+    array(),
+    '4.6.2',
+    'all'
+   );
+
+   wp_enqueue_script(
+    'bootstrap-js',
+    'https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js',
+    array('jquery'),
+    '4.6.2',
+    true
+   );
+
+}
+add_action('wp_enqueue_scripts', 'ds_add_bootstrap');
+
+
 ?>

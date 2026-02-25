@@ -2,10 +2,7 @@
 
 
 
-<h1> Ds portfolio template </h1>
-
-
-<h1>heej gerti this is the right page</h1>
+<h1> About Me(slug based)</h1>
 
 
  <?php if (have_posts()): while (have_posts()): the_post(); ?>
