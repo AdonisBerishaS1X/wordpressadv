@@ -69,5 +69,49 @@ function ds_add_bootstrap(){
 }
 add_action('wp_enqueue_scripts', 'ds_add_bootstrap');
 
+function themename_widgets(){
+    register_sidebar(
+        array(
+            'name' => __("Primary Sidebar", 'theme_name'),
+            'id' => 'primary-sidebar',
+            'before_widget' => '<aside id="$1%" class="widget %2$s"></aside>'
+            'after_widget' => '</aside>',
+            'before_title' => '<h3 class="widget-title">',
+            'after_title' => '</h3>'
+        )
+        );
+}
 
+
+add_action('widgets_init', 'themename_widgets_init');
+
+class Foo_Widget extends WP_Widget {
+    public funtion__construct() {
+        parent::__construct(
+            'foo_widget',
+            'foo widget',
+            'A Foo Widget'
+        );
+    }
+
+    public function widget($args,$instance){
+        echo $args['before_widget'];
+        echo '<p> Hello World </p>';
+        echo '<p> Hello grupi 6A </p>'
+        echo $args['after_widget'];
+    }
+
+    public function form($instance){
+        echo '<p> No options yet </p>';
+    }
+
+    public function update($new_instance, $old_instance){
+        return $new_instance;
+    }
+}
+
+function register_foo_widget(){
+    register_widget('Foo_Widget');
+}
+add_action('widgets_init', 'register_foo_widget');
 ?>
