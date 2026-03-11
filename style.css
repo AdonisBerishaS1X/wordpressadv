@@ -48,13 +48,13 @@ article{
     border-radius: 20px;
     box-shadow:  0 10px 25px rgba(0,0,0,0.2);
 }
-.slides{
+.slide{
     display: flex;
     animation: slide 12s infinite;
 }
 
 
-.slides img{
+.slide img{
     width: 100%;
 }
 

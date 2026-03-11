@@ -6,12 +6,12 @@
     <div class="slider">
         <div class="slide">
 
-     <img src="<?php echo get_template_directory_uri(); ?>/images/slid1.jpg">
-     <img src="<?php echo get_template_directory_uri(); ?>/images/slid2.jpg">
-     <img src="<?php echo get_template_directory_uri(); ?>/images/slid3.jpg">
+            <img src="<?php echo get_template_directory_uri(); ?>/images/slid1.jpg">
+            <img src="<?php echo get_template_directory_uri(); ?>/images/slid2.jpg">
+            <img src="<?php echo get_template_directory_uri(); ?>/images/slid3.jpg">
 
-</div>
-</div>
+        </div>
+    </div>
 </div>
 
 <div class="row mt-5">
