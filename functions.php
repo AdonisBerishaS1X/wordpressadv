@@ -1,5 +1,6 @@
 <?php
 
+
 function ds_theme_assets() {
 
 
@@ -45,70 +46,118 @@ add_action('wp_enqueue_scripts', 'ds_theme_assets');
 
 
 
+function ds_setup() {
 
-function ds_add_bootstrap(){
-   wp_enqueue_style(
-    'bootstrap-css',
-    'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css',
-    array(),
-    '4.6.2',
-    'all'
-   );
 
-   wp_enqueue_script(
-    'bootstrap-js',
-    'https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js',
-    array('jquery'),
-    '4.6.2',
-    true
-   );
+    add_theme_support('menus');
+
+
+   
+    register_nav_menu('primary', 'Primary Menu');
+
 
 }
-add_action('wp_enqueue_scripts', 'ds_add_bootstrap');
-
-// function themename_widgets(){
-//     register_sidebar(
-//         array(
-//             'name' => __("Primary Sidebar", 'theme_name'),
-//             'id' => 'primary-sidebar',
-//             'before_widget' => '<aside id="$1%" class="widget %2$s">'
-//             'after_widget' => '</aside>',
-//             'before_title' => '<h3 class="widget-title">',
-//             'after_title' => '</h3>'
-//         )
-//         );
-// }
 
 
-//add_action('widgets_init', 'themename_widgets_init');
+add_action('init', 'ds_setup');
 
-// class Foo_Widget extends WP_Widget {
-//     public funtion__construct() {
-//         parent::__construct(
-//             'foo_widget',
-//             'foo widget',
-//             'A Foo Widget'
-//         );
-//     }
 
-//     public function widget($args,$instance){
-//         echo $args['before_widget'];
-//         echo '<p> Hello World </p>';
-//         echo '<p> Hello grupi 6A </p>'
-//         echo $args['after_widget'];
-//     }
+function ds_theme_setup() {
+    add_theme_support('post-thumbnails');
 
-//     public function form($instance){
-//         echo '<p> No options yet </p>';
-//     }
 
-//     public function update($new_instance, $old_instance){
-//         return $new_instance;
-//     }
-// }
+    add_theme_support('post-formats', array('aside', 'image', 'video'));
 
-// function register_foo_widget(){
-//     register_widget('Foo_Widget');
-// }
-// add_action('widgets_init', 'register_foo_widget');
+
+    add_theme_support('title-tag');
+}
+add_action('after_setup_theme', 'ds_theme_setup');
+
+
+;
+function ds_add_bootstrap_cdn() {
+
+
+    
+    wp_enqueue_style(
+        'bootstrap-css',
+        'https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css',
+        array(),
+        '4.6.2',
+        'all'
+    );
+
+
+    wp_enqueue_script(
+        'bootstrap-js',
+        'https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js',
+        array('jquery'),
+        '4.6.2',
+        true
+    );
+}
+
+
+add_action('wp_enqueue_scripts', 'ds_add_bootstrap_cdn');
+
+
+
+function themename_widgets_init() {
+
+
+    register_sidebar( array(
+        'name'          => __( 'Primary Sidebar', 'theme_name' ),
+        'id'            => 'sidebar-1',
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</aside>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ) );
+
+
+}
+add_action( 'widgets_init', 'themename_widgets_init' );
+
+
+class Foo_Widget extends WP_Widget {
+
+
+    public function __construct() {
+        parent::__construct(
+            'foo_widget',
+            'A Foo Widget'
+        );
+    }
+
+
+    public function widget( $args, $instance ) {
+        echo $args['before_widget'];
+        echo '<p>Hello World</p>';
+        echo $args['after_widget'];
+    }
+
+
+    public function form( $instance ) {
+        echo '<p>No options yet</p>';
+    }
+
+
+    public function update( $new_instance, $old_instance ) {
+        return $new_instance;
+    }
+}
+
+
+function register_foo_widget() {
+    register_widget( 'Foo_Widget' );
+}
+add_action( 'widgets_init', 'register_foo_widget' );
+
+function my_limit_posts_on_index($query){
+    if(!is_admin() && $query->is_main_query() && is_home()){
+        $query->set('posts_per_page', 5);
+    }
+}
+add_action('pre_get_posts', 'my_limit_posts_on_index');
 ?>
+

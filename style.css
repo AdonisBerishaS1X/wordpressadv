@@ -82,3 +82,125 @@ article{
     background-size: cover;
     background-position: center;
 }
+
+/* 404 page styles */
+.error-404.not-found{
+    min-height: calc(100vh - 200px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    background: #f9fafb;
+}
+.error-404 .page-header .page-title{
+    font-size: 2.5rem;
+    margin: 0 0 8px;
+    color: #222;
+}
+.error-404 h2{
+    font-size: 1.5rem;
+    margin: 0 0 12px;
+    color: #666;
+}
+.error-404 p{
+    color: #555;
+    margin: 0 0 16px;
+}
+.error-404 .search-form{
+    max-width: 480px;
+    margin: 12px auto 0;
+    display: flex;
+    gap: 8px;
+}
+.error-404 .search-form input[type="search"],
+.error-404 .search-form input[type="text"]{
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+}
+.error-404 .search-form button,
+.error-404 .search-form input[type="submit"]{
+    padding: 10px 14px;
+    border: none;
+    background: #111;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+@media (max-width: 600px){
+    .error-404 .page-header .page-title{font-size:1.75rem}
+    .error-404{padding:30px 12px}
+}
+
+.error-404 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+    text-align: center;
+    background: #f9fafb;
+    padding: 40px 20px;
+}
+
+.error-container {
+    max-width: 500px;
+}
+
+.error-code {
+    font-size: 120px;
+    font-weight: 800;
+    color: #e63946;
+    margin: 0;
+}
+
+.error-title {
+    font-size: 28px;
+    margin: 10px 0;
+    color: #333;
+}
+
+.error-message {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+/* Search form */
+.error-search input[type="search"] {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px 0 0 6px;
+    outline: none;
+}
+
+.error-search input[type="submit"] {
+    padding: 10px 15px;
+    border: none;
+    background: #457b9d;
+    color: #fff;
+    border-radius: 0 6px 6px 0;
+    cursor: pointer;
+}
+
+.error-search input[type="submit"]:hover {
+    background: #1d3557;
+}
+
+/* Button */
+.error-home-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #1d3557;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: 0.3s ease;
+}
+
+.error-home-btn:hover {
+    background: #457b9d;
+}
