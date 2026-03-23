@@ -159,5 +159,41 @@ function my_limit_posts_on_index($query){
     }
 }
 add_action('pre_get_posts', 'my_limit_posts_on_index');
+
+
+
+function our_custom_movie(){
+    $labels = array(
+        'name'                 => __('Movies', 'post type general name'),
+        'singular_name'        => __('Movie', 'post type singular name'),
+        'add_new'              => __('Add New', 'post type singular name'),
+        'add_new_item'         => __('Add New Movie'),
+        'edit_item'            => __('Edit Movie'),
+        'new_new'              => __('New Movie'),
+        'all_items'            => __('All Movies'),
+        'view_items'           => __('View Movies'),
+        'search_items'         => __('Search Movies'),
+        'not_found'            => __('No Movies found'),
+        'not_found_in_trash'   => __('No Movies found in Trash'),
+        'parent_item_colon'    => '',
+        'menu_name'            => 'Movies'
+    );
+
+    $args=array(
+        'labels'                  => $Labels,
+        'description'             =>'Movies and single movie details',
+        'public'                  => true,
+        'publicly_queryable'      => true,
+        'menu_position'           => 5,
+        'supports'                => array('title', 'editor', 'thumbnail', 'excerpt', 'comments'),
+        'has_archive'             => true,
+        'rewrite'                 => array('slug' => 'movies'),
+        'show_in_rest'            => true
+    );
+
+    register_post_type('movie', $args);
+}
+
+add_action('init','our_custom_movie');
 ?>
 
